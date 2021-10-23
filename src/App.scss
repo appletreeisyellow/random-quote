@@ -1,0 +1,72 @@
+$primary-color: lightblue;
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+html,
+body {
+  background: $primary-color;
+  height: 100%;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+}
+
+#app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+#quote-box {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  border: 1px solid white;
+  background-color: white;
+  @include border-radius(15px);
+  padding: 40px 50px;
+}
+
+#quote-sign {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  color: $primary-color;
+  transition: color 0.5s ease;
+}
+
+#text-container {
+  display: flex;
+  justify-content: center;
+  #text {
+    min-height: 50px;
+    width: 80%;
+  }
+}
+
+#tweet-quote {
+  text-align: center;
+  display: none;
+}
+
+p {
+  text-align: center;
+  transition: color 0.5s ease;
+}
+
+#new-quote {
+  width: 120px;
+  height: 50px;
+  align-self: center;
+  background-color: $primary-color;
+  border-color: $primary-color;
+  color: white;
+  transition: background-color 0.5s ease;
+  transition: border-color 0.2s;
+  @include border-radius(10px);
+}
