@@ -78,7 +78,7 @@ class App extends React.Component {
     const color = Math.floor(Math.random() * colors.length)
     return (
       <div id="quote-box">
-        <i id="quote-sign" class="fa fa-quote-left" style={{color: colors[color]}}></i>
+        <i id="quote-sign" className="fa fa-quote-left" style={{color: colors[color]}}></i>
         <div id="text-container">
           <p id="text" style={{color: colors[color]}}>
              {this.state.text}
