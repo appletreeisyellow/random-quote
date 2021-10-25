@@ -9,10 +9,9 @@ $primary-color: lightblue;
 
 html,
 body {
-  background: $primary-color;
   height: 100%;
   font-family: "Courier New", monospace;
-  font-weight: bold;
+  transition: background 1s ease;
 }
 
 #root {
@@ -22,51 +21,97 @@ body {
   min-height: 100%;
 }
 
-#quote-box {
+#quote-box-container {
   display: flex;
   flex-direction: column;
-  width: 40%;
-  border: 1px solid white;
-  background-color: white;
-  @include border-radius(15px);
-  padding: 40px 50px;
-}
+  width: 580px;
 
-#quote-sign {
-  font-size: 50px;
-  font-weight: bold;
-  text-align: center;
-  color: $primary-color;
-  transition: color 0.5s ease;
-}
+  #quote-box {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 50px;
+    border: 1px solid white;
+    background-color: white;
+    @include border-radius(15px);
 
-#text-container {
-  display: flex;
-  justify-content: center;
-  #text {
-    min-height: 50px;
-    width: 80%;
+    #quote-sign {
+      font-size: 50px;
+      font-weight: bold;
+      text-align: center;
+      color: $primary-color;
+      transition: color 1s ease;
+    }
+
+    #text-container {
+      display: flex;
+      justify-content: center;
+      #text {
+        font-size: 28px;
+        font-weight: bold;
+        min-height: 50px;
+        width: 80%;
+      }
+      transition: text 1s ease;
+    }
+
+    #author {
+      transition: text 1s ease;
+    }
+
+    #new-quote {
+      width: 120px;
+      height: 50px;
+      align-self: center;
+      background-color: $primary-color;
+      border-color: $primary-color;
+      color: white;
+      transition: background-color 1s ease;
+      transition: border-color 0.2s;
+      @include border-radius(10px);
+    }
+
+    #tweet-quote {
+      text-align: center;
+      display: none;
+    }
   }
-}
 
-#tweet-quote {
-  text-align: center;
-  display: none;
+  #footer {
+    text-align: center;
+    padding-top: 15px;
+    color: white;
+  }
 }
 
 p {
   text-align: center;
-  transition: color 0.5s ease;
+  transition: color 1s ease;
 }
 
-#new-quote {
-  width: 120px;
-  height: 50px;
-  align-self: center;
-  background-color: $primary-color;
-  border-color: $primary-color;
+a {
+  text-decoration-color: white;
+}
+
+a:link {
   color: white;
-  transition: background-color 0.5s ease;
-  transition: border-color 0.2s;
-  @include border-radius(10px);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: white;
+  background-color: transparent;
+  text-decoration: underline;
 }

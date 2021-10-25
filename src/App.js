@@ -25,11 +25,16 @@ class App extends React.Component {
       quotes: [],
       text: '',
       author: '',
+      color: colors[0],
     }
   }
 
   componentDidMount() {
     this.fetchQuote()
+  }
+
+  componentDidUpdate() {
+    document.body.style.background = this.state.color;
   }
   
   async fetchQuote() {
@@ -63,45 +68,57 @@ class App extends React.Component {
   }
   
   handleClick = () => {
-    const i = this.getRandomQuoteIndex(this.state.quotes) 
+    // generate a random index for quote
+    const i = this.getRandomQuoteIndex(this.state.quotes);
+    // generate a random index for color
+    const colorI = Math.floor(Math.random() * colors.length)
+    const color = colors[colorI];
     // set the text and author at this random index
     const text = this.state.quotes[i] ? this.state.quotes[i].quote : "";
     const author = this.state.quotes[i] ? this.state.quotes[i].author : "";
     this.setState({
       text,
-      author
+      author,
+      color
     });
   }
 
   render() {
-    // generate a random color
-    const color = Math.floor(Math.random() * colors.length)
+    const color = this.state.color;
     return (
-      <div id="quote-box">
-        <i id="quote-sign" className="fa fa-quote-left" style={{color: colors[color]}}></i>
-        <div id="text-container">
-          <p id="text" style={{color: colors[color]}}>
-             {this.state.text}
+      <div id="quote-box-container">
+        <div id="quote-box">
+          <i id="quote-sign" className="fa fa-quote-left" style={{color}}></i>
+          <div id="text-container">
+            <p id="text" style={{color}}>
+              {this.state.text}
+            </p>
+          </div>
+          <p id="author" style={{color}}>
+            - {this.state.author}
           </p>
+          <button
+            id="new-quote"
+            style={{
+              borderColor: color,
+              backgroundColor: color
+            }}
+            onClick={this.handleClick}>
+            New Quote
+          </button>
+          <a
+            id="tweet-quote"
+            href="twitter.com/intent/tweet"
+            target="_blank">
+            Tweet quote
+          </a>
         </div>
-        <p id="author" style={{color: colors[color]}}>
-           - {this.state.author}
-        </p>
-        <button
-          id="new-quote"
-          style={{
-            borderColor: colors[color],
-            backgroundColor: colors[color]
-          }}
-          onClick={this.handleClick}>
-          New Quote
-        </button>
-        <a
-          id="tweet-quote"
-          href="twitter.com/intent/tweet"
-          target="_blank">
-           Tweet quote
-        </a>
+        <div id="footer">
+            by <a 
+              href="https://www.chunchunye.com/" 
+              target="_blank" 
+              rel="noreferrer">chunchun</a>
+        </div>
       </div>
     );
   }
