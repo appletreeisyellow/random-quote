@@ -115,3 +115,13 @@ a:active {
   background-color: transparent;
   text-decoration: underline;
 }
+
+.fade-out {
+  opacity: 0%;
+  transition: opacity 0.6s ease;
+}
+
+.fade-in {
+  opacity: 100%;
+  transition: opacity 0.6s ease;
+}

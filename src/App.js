@@ -26,6 +26,7 @@ class App extends React.Component {
       text: '',
       author: '',
       color: colors[0],
+      fading: false, // to animate text change transition
     }
   }
 
@@ -52,7 +53,7 @@ class App extends React.Component {
       this.setState({
         quotes: data.quotes,
         text,
-        author
+        author,
       })
     } catch(e) {
       console.log(e);
@@ -77,24 +78,35 @@ class App extends React.Component {
     const text = this.state.quotes[i] ? this.state.quotes[i].quote : "";
     const author = this.state.quotes[i] ? this.state.quotes[i].author : "";
     this.setState({
-      text,
-      author,
-      color
+      color,
+      fading: true, // fade out
     });
+    this.timer = setTimeout(_ => {
+      this.setState({
+        text,
+        author,
+        fading: false, // fade back in
+      });
+    }, 500); // animation timing offset
   }
 
   render() {
     const color = this.state.color;
+    const fadingClassName = this.state.fading ? 'fade-out' : 'fade-in';
     return (
       <div id="quote-box-container">
         <div id="quote-box">
           <i id="quote-sign" className="fa fa-quote-left" style={{color}}></i>
           <div id="text-container">
-            <p id="text" style={{color}}>
+            <p id="text"
+              style={{color}}
+              className={fadingClassName}>
               {this.state.text}
             </p>
           </div>
-          <p id="author" style={{color}}>
+          <p id="author"
+            style={{color}}
+            className={fadingClassName}>
             - {this.state.author}
           </p>
           <button
