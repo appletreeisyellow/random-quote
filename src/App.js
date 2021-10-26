@@ -88,7 +88,7 @@ class App extends React.Component {
 
   render() {
     const color = this.state.color;
-    const fadingClassName = this.state.fading ? 'fade-out' : 'fade-in';
+    const fadingClassName = this.state.fading ? 'fadeout' : 'fadein';
     document.body.style.background = this.state.color;
     return (
       <div id="quote-box-container">
