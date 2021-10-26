@@ -1,6 +1,6 @@
 # Random Quote Generator
 
-A random quote generator
+A random quote generator. See demo [here](https://www.chunchunye.com/random-quote/).
 
 ---
 
@@ -30,6 +30,10 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
+
+### `npm run deploy`
+
+Deploy the app and publish it. The deployed code is on branch `gh-page`.
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
